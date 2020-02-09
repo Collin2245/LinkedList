@@ -2,15 +2,16 @@
 #define LinkedList_hpp
 #include "Node.hpp"
 
-class LinkedList
+class LinkedList 
 {
 private:
-    Node* Head;
+    Node* head;
     int count;
-
+    
 public:
-    void addFront();
-    void addEnd();
-    void addAtIndex();
+    LinkedList();
+    void addFront(int payload);
+    void display();
+    
 };
 #endif /* LinkedList_hpp */
