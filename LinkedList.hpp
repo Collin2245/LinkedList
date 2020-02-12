@@ -12,6 +12,13 @@ public:
     LinkedList();
     void addFront(int payload);
     void display();
+    int getFront();
+    int removeFront();
+    //homework
+    void addEnd(int payload);
+    int getEnd();
+    int removeEnd();
+
     
 };
 #endif /* LinkedList_hpp */

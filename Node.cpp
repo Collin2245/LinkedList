@@ -3,6 +3,7 @@
 Node::Node(int payload)
 {
     this->payload = payload;
+    //this-> means the actual value of the payload
 }
 
 int Node::getPayload()
