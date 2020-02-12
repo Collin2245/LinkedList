@@ -78,19 +78,8 @@ int LinkedList::getEnd()
 
 int LinkedList::removeEnd()
 {
-    int returnValue;
-    Node* currNode = this->head;
-    for(int i = 0; i < this->count; i++)
-    {
-        if(i+1<this->count)
-        {
-            currNode = currNode->getNextNode();
-        }
-        else
-        {
-            returnValue = currNode->getPayload();
-        }       
-    }
+    int returnValue = LinkedList::getEnd();
+    
 
     currNode = this->head;
     for(int i = 0; i < this->count; i++)
@@ -102,10 +91,11 @@ int LinkedList::removeEnd()
         else
         {
             currNode->setNextNode(NULL);
+            count-=1;
+            return returnValue;
         }       
     }
-    count-=1;
-    return returnValue;
+   
 }
     
 void LinkedList::display()
