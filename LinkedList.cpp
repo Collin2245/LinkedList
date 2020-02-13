@@ -81,7 +81,7 @@ int LinkedList::removeEnd()
     int returnValue = LinkedList::getEnd();
     
 
-    currNode = this->head;
+    Node* currNode = this->head;
     for(int i = 0; i < this->count; i++)
     {
         if(i+2<this->count)
