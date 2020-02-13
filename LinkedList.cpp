@@ -39,25 +39,32 @@ int LinkedList::removeFront()
 
 void LinkedList::addEnd(int payload) //assuming there is at least one node
 {
-
-    Node* n  = new Node(payload);
-    Node* currNode = this->head;
-    for(int i = 0; i < this->count; i++)
+    if(!this->head)
     {
+        this->addFront(payload);
+    }
+    else
+    {
+        Node* n  = new Node(payload);
+        Node* currNode = this->head;
+        for(int i = 0; i < this->count; i++)
+        {
         
-        if(i+1<this->count)
-        {
-            std::cout << "Loop TIME" << currNode->getPayload() << "\n" ;
-            currNode = currNode->getNextNode();
+            if(i+1<this->count)
+            {
+                //std::cout << "Loop TIME" << currNode->getPayload() << "\n" ;
+                currNode = currNode->getNextNode();
             
-        }
-        else
-        {
-            std::cout << "LAST TIME" <<currNode->getPayload() << "\n" ;
-            currNode->setNextNode(n);
-        }        
-    }   
-count += 1;
+            }
+            else
+            {
+                //std::cout << "LAST TIME" <<currNode->getPayload() << "\n" ;
+                currNode->setNextNode(n);
+            }        
+        }   
+        count += 1;
+    }
+   
 }
 
 int LinkedList::getEnd()
@@ -78,24 +85,28 @@ int LinkedList::getEnd()
 
 int LinkedList::removeEnd()
 {
-    int returnValue = LinkedList::getEnd();
-    
-
-    Node* currNode = this->head;
-    for(int i = 0; i < this->count; i++)
+    if(!this->head->getNextNode())
     {
-        if(i+2<this->count)
-        {
-            currNode = currNode->getNextNode();
-        }
-        else
-        {
-            currNode->setNextNode(NULL);
-            count-=1;
-            return returnValue;
-        }       
+        this->removeFront();
     }
-   
+    else
+    {
+        int returnValue = LinkedList::getEnd();
+        Node* currNode = this->head;
+        for(int i = 0; i < this->count; i++)
+        {
+            if(i+2<this->count)
+            {
+                currNode = currNode->getNextNode();
+            }
+            else
+            {
+                currNode->setNextNode(NULL);
+                count-=1;
+                return returnValue;
+            }       
+        }
+    }       
 }
     
 void LinkedList::display()
