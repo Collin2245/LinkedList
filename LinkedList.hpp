@@ -18,6 +18,11 @@ public:
     void addEnd(int payload);
     int getEnd();
     int removeEnd();
+    //homework 2
+    void addIndex(int payload, int index);
+    int getIndex(int index);
+    int removeIndex(int index);
+    
 
     
 };
