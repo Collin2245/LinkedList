@@ -108,6 +108,101 @@ int LinkedList::removeEnd()
         }
     }       
 }
+
+
+
+
+void LinkedList::addIndex(int payload, int index)
+{
+    
+
+    if(index == 0)
+    {
+        this->addFront(payload);
+    }
+    else if (index >= count)
+    {
+        this->addEnd(payload);
+    }
+    else
+    {
+        Node* n  = new Node(payload);
+        Node* currNode = this->head;
+        Node* prevNode;
+        for(int i = 0; i< index; i++)
+        {
+            prevNode = currNode;
+            currNode = currNode->getNextNode();   
+        }
+        //std::cout << "prev Node:" << prevNode->getPayload()<<" CurrNode:" <<currNode->getPayload() << "\n";
+        prevNode->setNextNode(n);
+        n->setNextNode(currNode);
+        count +=1;
+    }    
+}
+
+int LinkedList::getIndex(int index)
+{
+    if(index >= count-1)
+    {
+        return this->getEnd();
+    }
+    else if (index == 0)
+    {
+        return this->getFront();
+    }
+    else
+    {
+        Node* currNode = this->head;
+
+        for(int i = 0; i< index; i++)
+        {  
+            if(i<index)
+            {
+                currNode = currNode->getNextNode();
+            }
+            else
+            {
+                return currNode->getPayload();
+            } 
+        }
+    }    
+}
+
+int LinkedList::removeIndex(int index)
+{
+    int returnValue = LinkedList::getIndex(index);
+    if(index==0)
+    {
+        this->removeFront();
+        return returnValue;
+    }
+    else if(index==count-1)
+    {
+        this->removeEnd();
+        return returnValue;
+    }
+    else
+    {
+    Node* prevNode;
+    Node* currNode = this->head;
+    Node* nextNode;
+    int i = 0;
+
+        while(i<index)
+        {
+            i+=1;
+            prevNode = currNode;
+            currNode = currNode->getNextNode();
+            nextNode = currNode->getNextNode();
+        }
+        //std::cout << "RUNNNNUINGINGINGINIGN" << "\n"<<"prev: "<<prevNode->getPayload() <<"curr: " << currNode->getPayload() << "next: " << nextNode->getPayload() <<"\n";
+        delete currNode;
+        prevNode->setNextNode(nextNode);
+        count-=1;
+        return returnValue;
+    }
+}
     
 void LinkedList::display()
 {
@@ -118,6 +213,9 @@ void LinkedList::display()
         currNode = currNode->getNextNode();
     }
 }
+
+
+
 
 
 
