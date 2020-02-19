@@ -203,7 +203,9 @@ int LinkedList::removeIndex(int index)
         return returnValue;
     }
 }
-
+//     1        3           2        0       
+//count3 0
+//count2 0
 void LinkedList::sort()
 {
     int count3=0;
