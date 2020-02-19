@@ -206,52 +206,34 @@ int LinkedList::removeIndex(int index)
 
 void LinkedList::sort()
 {
-    
-    
-    std::cout <<"jkhghjkljkhhjklkljhlkjh"<<"\n";
+    int count3=0;
     Node* currNode = this->head;
 
     for(int i = 0; i < this->count; i++)        
     {
-        std::cout<<"alert"<<"\n";
+        //std::cout<<"alert"<<"\n";
         if(currNode->getPayload() > currNode->getNextNode()->getPayload()) //checks if current payload is greater then next payload
         {
+            
             Node * otherCurr = this->head;
-            Node * nextNode = currNode->getNextNode();
             int countTwo = 0;
             int testingNum = currNode->getNextNode()->getPayload();
-            Node * prevNode;
+ 
             for(int z = 0; z<i; z++)
             {
                 
                 if(otherCurr->getPayload() >= testingNum)
                 {
-                    if(countTwo ==0)
-                    {
-                        Node * oldHead = this->head;
-
-                        this->head = currNode->getNextNode();
-                        currNode->getNextNode()->setNextNode(oldHead);
-                        otherCurr->setNextNode(nextNode);
-                        currNode->setNextNode(nextNode->getNextNode());
-                        
-                        
-                        break;
-                    }
-                    else
-                    {
-                        prevNode = otherCurr->getNextNode();
-                        otherCurr->getNextNode()->setNextNode(currNode);
-                        currNode->setNextNode(currNode->getNextNode()->getNextNode());  
-                        break;
-                    }
                     
- 
+                    //std::cout<<"count: " <<countTwo<<"\n"<<this->getIndex(countTwo)<<"\n";
+                    int temp = this->removeIndex(count3);
+                    this->addIndex(testingNum,countTwo);
+                    break;
+
                 }
                 else
                 {
-                    std::cout<<"running else";
-                    prevNode = otherCurr;
+                    
                     otherCurr = otherCurr->getNextNode();
                     countTwo+=1;
                 }
@@ -262,7 +244,7 @@ void LinkedList::sort()
         {
             currNode = currNode->getNextNode();
         }
-        
+        count3+=1;
     }
 }
     
