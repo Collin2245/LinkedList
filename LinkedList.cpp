@@ -203,6 +203,68 @@ int LinkedList::removeIndex(int index)
         return returnValue;
     }
 }
+
+void LinkedList::sort()
+{
+    
+    
+    std::cout <<"jkhghjkljkhhjklkljhlkjh"<<"\n";
+    Node* currNode = this->head;
+
+    for(int i = 0; i < this->count; i++)        
+    {
+        std::cout<<"alert"<<"\n";
+        if(currNode->getPayload() > currNode->getNextNode()->getPayload()) //checks if current payload is greater then next payload
+        {
+            Node * otherCurr = this->head;
+            Node * nextNode = currNode->getNextNode();
+            int countTwo = 0;
+            int testingNum = currNode->getNextNode()->getPayload();
+            Node * prevNode;
+            for(int z = 0; z<i; z++)
+            {
+                
+                if(otherCurr->getPayload() >= testingNum)
+                {
+                    if(countTwo ==0)
+                    {
+                        Node * oldHead = this->head;
+
+                        this->head = currNode->getNextNode();
+                        currNode->getNextNode()->setNextNode(oldHead);
+                        otherCurr->setNextNode(nextNode);
+                        currNode->setNextNode(nextNode->getNextNode());
+                        
+                        
+                        break;
+                    }
+                    else
+                    {
+                        prevNode = otherCurr->getNextNode();
+                        otherCurr->getNextNode()->setNextNode(currNode);
+                        currNode->setNextNode(currNode->getNextNode()->getNextNode());  
+                        break;
+                    }
+                    
+ 
+                }
+                else
+                {
+                    std::cout<<"running else";
+                    prevNode = otherCurr;
+                    otherCurr = otherCurr->getNextNode();
+                    countTwo+=1;
+                }
+                
+            }
+        }
+        else
+        {
+            currNode = currNode->getNextNode();
+        }
+        
+    }
+}
     
 void LinkedList::display()
 {
@@ -210,6 +272,17 @@ void LinkedList::display()
     for(int i = 0; i < this->count; i++)
     {
         std::cout << currNode->getPayload() << "\n";
+
+         currNode = currNode->getNextNode();
+    }
+}
+
+void LinkedList::displayPointers()
+{
+    Node* currNode = this->head;
+    for(int i = 0; i < this->count; i++)
+    {
+        std::cout << currNode << "\n";
         currNode = currNode->getNextNode();
     }
 }

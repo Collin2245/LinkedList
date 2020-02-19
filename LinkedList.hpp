@@ -22,6 +22,9 @@ public:
     void addIndex(int payload, int index);
     int getIndex(int index);
     int removeIndex(int index);
+    //
+    void displayPointers();
+    void sort(); //sorts the linked list so it is in ascending order
     
 
     
