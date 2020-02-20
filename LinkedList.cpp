@@ -203,50 +203,37 @@ int LinkedList::removeIndex(int index)
         return returnValue;
     }
 }
-//     1        3           2        0       
-//count3 0
-//count2 0
+
 void LinkedList::sort()
 {
-    int count3=0;
     Node* currNode = this->head;
 
     for(int i = 0; i < this->count; i++)        
     {
-        //std::cout<<"alert"<<"\n";
         if(currNode->getPayload() > currNode->getNextNode()->getPayload()) //checks if current payload is greater then next payload
-        {
-            
+        {   
             Node * otherCurr = this->head;
-            int countTwo = 0;
             int testingNum = currNode->getNextNode()->getPayload();
- 
-            for(int z = 0; z<i; z++)
-            {
-                
-                if(otherCurr->getPayload() >= testingNum)
-                {
-                    
-                    //std::cout<<"count: " <<countTwo<<"\n"<<this->getIndex(countTwo)<<"\n";
-                    int temp = this->removeIndex(count3);
-                    this->addIndex(testingNum,countTwo);
-                    break;
 
+            for(int z = 0; z<i; z++)
+            { 
+                if(otherCurr->getPayload() >= testingNum)
+                { 
+                    int temp = this->removeIndex(i);
+                    this->addIndex(testingNum,z);
+                    break;
                 }
                 else
-                {
-                    
+                {  
                     otherCurr = otherCurr->getNextNode();
-                    countTwo+=1;
-                }
-                
+                }  
             }
         }
         else
         {
             currNode = currNode->getNextNode();
         }
-        count3+=1;
+       
     }
 }
     
